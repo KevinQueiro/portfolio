@@ -1,11 +1,13 @@
 import UserSchema from '../models/user.model.js'
 
 export const getUser = async(req, res) => {
+    console.log('entra');
     try {
         const user = await UserSchema.find()
+        console.log(user);
         res.send(user)
     } catch (error) {
-        console.error(error);
+        console.error('getUserError', error);
     }
 }
 
