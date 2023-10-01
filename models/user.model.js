@@ -7,21 +7,29 @@ import SkillSchema from "./skill.model.js";
 const UserSchema = mongoose.Schema({
     name: {
         type: String,
-        trim: true
+        trim: true,
+        required: true
     },
     lastname: {
         type: String,
-        trim: true
+        trim: true,
+        required: true
     },
     photo: {
         type: String
     },
     title: {
         type: String,
-        trim: true
+        trim: true,
+        required: true
     },
     birthdate: {
-        type: Date
+        type: Date,
+        required: true
+    },
+    password: {
+        type: String,
+        required: true
     },
     experiences: [ExpSchema],
     educations: [EduSchema],

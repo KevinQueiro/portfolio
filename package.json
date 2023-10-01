@@ -19,14 +19,14 @@
   },
   "homepage": "https://github.com/KevinQueiro/portfolio_mysql#readme",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "mongodb": "^6.1.0",
     "mongoose": "^7.2.2",
-    "morgan": "^1.10.0",
-    "sequelize": "^6.32.1"
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
