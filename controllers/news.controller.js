@@ -3,15 +3,6 @@ import bcrypt from 'bcrypt';
 import access from '../utils/access.js';
 import { handleError } from '../utils/hadleError.js';
 
-export const getUser = async (req, res) => {
-    try {
-        const user = await UserSchema.find()
-        res.send(user)
-    } catch (error) {
-        console.error('getUserError', error);
-    }
-}
-
 export const postUser = async (req, res) => {
     try {
         const newUser = new UserSchema({
@@ -41,7 +32,7 @@ export const postEdu = async (req, res) => {
             photo: req.body.photo
         }
         currentUser.educations.push(newEdu);
-        console.log(await currentUser.save())
+        await currentUser.save()
         res.send('done')
     } catch (error) {
         console.log('------------ERROR--------', error);

@@ -1,8 +1,11 @@
 import UserSchema from '../models/user.model.js'
+import access from '../utils/access.js'
+import { handleError } from '../utils/hadleError.js'
 
 export const deleteEdu = async(req, res) => {
     try {
         const user = await UserSchema.findById(req.params.userId)
+        await access(req.body.password, user.password, res.send)
         const eduIndex = user.educations.findIndex(edu => edu.id === req.params.eduId);
         if(eduIndex === -1){
             res.send('no se encuentra la educacion')
@@ -12,13 +15,14 @@ export const deleteEdu = async(req, res) => {
         await user.save();
         res.send('deleted')
     } catch (error) {
-        console.error(error);
+        handleError(error, res);
     }
 }
 
 export const deleteExp = async(req, res) => {
     try {
         const user = await UserSchema.findById(req.params.userId)
+        await access(req.body.password, user.password, res.send)
         const expIndex = user.experiences.findIndex(edu => edu.id === req.params.expId);
         if(expIndex === -1){
             res.send('no se encuentra la experiencia')
@@ -28,13 +32,14 @@ export const deleteExp = async(req, res) => {
         await user.save();
         res.send('deleted')
     } catch (error) {
-        console.error(error);
+        handleError(error, res);
     }
 }
 
 export const deletePro = async(req, res) => {
     try {
         const user = await UserSchema.findById(req.params.userId)
+        await access(req.body.password, user.password, res.send)
         const proIndex = user.projects.findIndex(edu => edu.id === req.params.proId);
         if(proIndex === -1){
             res.send('no se encuentra el proyecto')
@@ -44,14 +49,14 @@ export const deletePro = async(req, res) => {
         await user.save();
         res.send('deleted')
     } catch (error) {
-        console.error(error);
+        handleError(error, res);
     }
 }
 
 export const deleteSkill = async(req, res) => {
-    console.log('entra');
     try {
         const user = await UserSchema.findById(req.params.userId)
+        await access(req.body.password, user.password, res.send)
         const skillIndex = user.skills.findIndex(edu => edu.id === req.params.skillId);
         if(skillIndex === -1){
             res.send('no se encuentra la habilidad')
@@ -61,16 +66,17 @@ export const deleteSkill = async(req, res) => {
         await user.save();
         res.send('deleted')
     } catch (error) {
-        console.error(error);
+        handleError(error, res);
     }
 }
 
 export const deleteUser = async(req, res) => {
-    console.log('entra');
     try {
+        const user = await UserSchema.findById(req.params.userId)
+        await access(req.body.password, user.password, res.send)
         await UserSchema.findByIdAndDelete(req.params.userId)
         res.send('deleted')
     } catch (error) {
-        console.error(error);
+        handleError(error, res);
     }
 }

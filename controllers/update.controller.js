@@ -1,7 +1,11 @@
 import UserSchema from '../models/user.model.js'
+import access from '../utils/access.js';
+import { handleError } from '../utils/hadleError.js';
 
 export const updateEdu = async (req, res) => {
     try {
+        const currentUser = await UserSchema.findById(req.params.userId);
+        await access(req.body.password, currentUser.password, res.send)
         await UserSchema.findOneAndUpdate(
             {
                 _id: req.params.userId,
@@ -18,12 +22,14 @@ export const updateEdu = async (req, res) => {
             { new: true })
         res.send('updated')
     } catch (error) {
-        console.error(error);
+        handleError(error, res);
     }
 }
 
 export const updateExp = async (req, res) => {
     try {
+        const currentUser = await UserSchema.findById(req.params.userId);
+        await access(req.body.password, currentUser.password, res.send)
         await UserSchema.findOneAndUpdate(
             {
                 _id: req.params.userId,
@@ -41,12 +47,14 @@ export const updateExp = async (req, res) => {
             { new: true })
         res.send('updated')
     } catch (error) {
-        console.error(error);
+        handleError(error, res);
     }
 }
 
 export const updatePro = async (req, res) => {
     try {
+        const currentUser = await UserSchema.findById(req.params.userId);
+        await access(req.body.password, currentUser.password, res.send)
         await UserSchema.findOneAndUpdate(
             {
                 _id: req.params.userId,
@@ -62,12 +70,14 @@ export const updatePro = async (req, res) => {
             { new: true })
         res.send('updated')
     } catch (error) {
-        console.error(error);
+        handleError(error, res);
     }
 }
 
 export const updateSkill = async (req, res) => {
     try {
+        const currentUser = await UserSchema.findById(req.params.userId);
+        await access(req.body.password, currentUser.password, res.send)
         await UserSchema.findOneAndUpdate(
             {
                 _id: req.params.userId,
@@ -82,12 +92,14 @@ export const updateSkill = async (req, res) => {
             { new: true })
         res.send('updated')
     } catch (error) {
-        console.error(error);
+        handleError(error, res);
     }
 }
 
 export const updateUser = async (req, res) => {
     try {
+        const currentUser = await UserSchema.findById(req.params.userId);
+        await access(req.body.password, currentUser.password, res.send)
         const updatedUser = {
             name: req.body.name,
             lastname: req.body.lastname,
@@ -98,6 +110,6 @@ export const updateUser = async (req, res) => {
         const user = await UserSchema.findOneAndUpdate({_id: req.params.userId}, updatedUser)
         res.send('updated')
     } catch (error) {
-        console.error(error);
+        handleError(error, res);
     }
 }

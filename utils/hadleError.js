@@ -1,5 +1,4 @@
 export const handleError = (error, res) => {
-    console.error('objet: ', Object.keys(error.errors));
     switch (error.code) {
         case 1:
             res.status(401).send('Wrong password');
