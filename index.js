@@ -6,7 +6,7 @@ async function main () {
         console.log('starting...');
         const port = process.env['PORT'] || 3000;
         await run().catch(console.dir);
-        app.listen(port)
+        await app.listen(port)
         console.log(`server on port ${port}`);
     } catch (error) {
         console.error(error);
