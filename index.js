@@ -1,5 +1,6 @@
 import app from "./app.js";
 import run from "./utils/mongoose.js";
+
 async function main () {
     try {
         console.log('starting...');
