@@ -13,7 +13,7 @@ export const getUser = async (req, res) => {
 export const postComment = async (req, res) => {
     try {
         const newComment = new CommentSchema({
-            name: req.body.name,
+            cname: req.body.cname,
             comment: req.body.comment
         })
         await newComment.save()
